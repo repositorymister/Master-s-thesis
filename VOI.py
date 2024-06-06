@@ -329,8 +329,8 @@ regN0, polyN0, reg_x, poly_x, reg_y, poly_y=Janbufuncs()
 # Get stability coefficients and coordinates of failure surfaces
 N0,Coord=failureSurfaces(regN0, polyN0, reg_x, poly_x, reg_y, poly_y, angle,Nsurf,Np,H,d)
 
-# Discretize the domain, domain discretization based on 2points per SOF property-set only for y-discretizations
-#X-discretizations based on judgement, probabaly should be too high because it signfies boreholes(measurement points)
+# Discretize the domain, domain discretization based on 2 points per SOF property-set only for y-discretizations
+#X-discretizations based on judgement, probably should be too high because it signifies boreholes(measurement points)
 Coord,Depth=discretizeDomain(Coord,Ndx,xMin,xMax,yMin,angle,H, 5.0)
 
 Npoints = Coord.shape[0]
@@ -421,6 +421,10 @@ def markov(x1,z1,x2,z2,thetax,thetaz):
 # Ellipsoidal
 def ellipsoid(x1,z1,x2,z2,thetax,thetaz):
     return np.exp(-2*np.sqrt(((x1-x2)/thetax)**2+((z1-z2)/thetaz)**2))
+    
+#Gaussian
+def Gaussian(x1,z1,x2,z2,thetax,thetaz):
+    return np.exp(-2 * (((x1-x2)/thetax)**2+((z1-z2)/thetaz)**2))
 
 #Creates a multi-linear approximation of mean layer boundary
 def piecewise_function(x, x1, y1, x2, y2):
