@@ -904,7 +904,7 @@ for i in range(Ni):
 
 end_time = time.time()
 total_time = end_time - start_time
-print(total_time)
+print(f'Execution time: {total_time}s')
 
 # Final results
 plt.plot(VoIa,marker='o')
