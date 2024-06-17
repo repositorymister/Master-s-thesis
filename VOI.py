@@ -434,7 +434,10 @@ def piecewise_function(x, x1, y1, x2, y2):
         return ((y2 - y1) / (x2 - x1)) * (x - x1) + y1
     elif x >= x2:
         return y2
-    
+#Create random fields
+def random_field(mean, cov):
+    return np.random.multivariate_normal(mean, cov)
+
 #Merges two layers based on the boundary property
 def complete_soil(coordinates, RF1, RF2, dividing_y, Nsamp):
     N, Nsamp = RF1.shape
