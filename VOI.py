@@ -317,8 +317,11 @@ angle=np.degrees(np.pi / 12)
 d=np.linspace(0,1,num=Nsurf)
 # Number of points along surface
 Np=30
+Ndx_threshold = 31
 # Number of discretization points in x direction
-Ndx=61
+Ndx = np.round(2 * (xMax - xMin) / theta_x) + 1
+if Ndx <= Ndx_threshold:
+    Ndx = Ndx_threshold
 # Boundaries
 xMin=-40; xMax=80; yMin=-30
 # Unit weight
